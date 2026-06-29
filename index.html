@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0a3d62">
+<title>FIFA 2026 — 32. Tur</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f0efed;--sur:#fff;--sur2:#f2f1ef;--bor:rgba(0,0,0,0.09);--bor2:rgba(0,0,0,0.18);--txt:#111;--txt2:#555;--txt3:#999;--acc:#0a3d62;--acc2:#0d6b57;--gbg:#e8f5d8;--gtxt:#235a0a;--gbr:#82b840;--rbg:#fde8e8;--rtxt:#7a1a1a;--rbr:#e88080;--r:10px;--rl:14px;--t:48px}
+@media(prefers-color-scheme:dark){:root{--bg:#161618;--sur:#242426;--sur2:#2e2e30;--bor:rgba(255,255,255,0.09);--bor2:rgba(255,255,255,0.22);--txt:#f2f2f2;--txt2:#aaa;--txt3:#666;--acc:#1a6fa8;--acc2:#1a8a70;--gbg:#162b0a;--gtxt:#98d060;--gbr:#3a6b11;--rbg:#2b1010;--rtxt:#e88080;--rbr:#7a1a1a}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased}
+.app{max-width:640px;margin:0 auto}
+.hdr{background:var(--acc);padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:90}
+.htitle{color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;gap:7px}
+.hbadge{background:rgba(255,255,255,0.18);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:400}
+.hright{display:flex;align-items:center;gap:6px}
+.user-chip{background:rgba(255,255,255,0.15);color:#fff;padding:5px 11px;border-radius:var(--r);font-size:12px;font-weight:500;display:flex;align-items:center;gap:5px}
+.adm-ind{background:rgba(255,210,0,0.22);border:0.5px solid rgba(255,210,0,0.5);color:#ffd700;padding:5px 9px;border-radius:var(--r);font-size:11px;display:none;align-items:center;gap:4px;font-weight:500}
+.adm-ind.on{display:flex}
+.abtn{background:rgba(255,255,255,0.13);border:0.5px solid rgba(255,255,255,0.25);color:#fff;padding:8px 13px;border-radius:var(--r);cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px;min-height:var(--t)}
+.bnav{display:flex;background:var(--sur);border-top:0.5px solid var(--bor);position:sticky;bottom:0;z-index:90}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 10px;cursor:pointer;color:var(--txt3);font-size:10px;gap:3px;min-height:56px;border:none;background:none}
+.bn i{font-size:22px}
+.bn.active{color:var(--acc);font-weight:600}
+.ct{padding:.9rem 1rem 1rem}
+.tc{display:none}.tc.active{display:block}
+.sl{font-size:11px;color:var(--txt3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.mc{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--rl);margin-bottom:14px;overflow:hidden}
+.mh{background:var(--acc);padding:9px 13px;display:flex;justify-content:space-between;align-items:center}
+.mhd{color:rgba(255,255,255,0.85);font-size:11px}
+.mhn{color:rgba(255,255,255,0.4);font-size:11px}
+.mt{padding:12px 14px;display:flex;align-items:center;gap:8px}
+.tn{flex:1;text-align:center;font-size:14px;font-weight:600;color:var(--txt);line-height:1.3}
+.vs{color:var(--txt3);font-size:12px;min-width:24px;text-align:center}
+.rb{background:var(--sur2);padding:6px 13px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.rdg{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:600}
+.rp{background:var(--sur2);color:var(--txt3);border:0.5px solid var(--bor)}
+.rok{background:var(--gbg);color:var(--gtxt)}
+.ow{padding:7px 13px;overflow-x:auto}
+.or{display:flex;gap:4px;width:max-content}
+.oc{background:var(--sur2);border:0.5px solid var(--bor);border-radius:5px;padding:3px 7px;font-size:10px;color:var(--txt2);text-align:center;min-width:44px}
+.oc span{display:block;font-size:12px;font-weight:600;color:var(--txt)}
+.pg{padding:8px 12px 14px;overflow-x:auto}
+.pgr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;min-width:280px}
+.pc{display:flex;flex-direction:column;gap:2px;align-items:center}
+.pav{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2);margin-bottom:2px}
+.pavi{width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.pn{font-size:10px;color:var(--txt2);font-weight:600;text-align:center}
+.pce{background:var(--sur2);border-radius:4px;padding:5px 2px;text-align:center;font-size:11px;font-weight:500;color:var(--txt);border:0.5px solid var(--bor);width:100%}
+.pce.ok{background:var(--gbg);border-color:var(--gbr);color:var(--gtxt)}
+.pce.ok2{background:#e3f2fd;border-color:#1565c0;color:#0d47a1}
+.pce.bad{background:var(--rbg);border-color:var(--rbr);color:var(--rtxt)}
+.pce.nd{color:var(--txt3)}
+.ppts{display:block;font-size:9px;font-weight:600;margin-top:1px}
+.sc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.scd{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--r);padding:12px 8px;text-align:center}
+.sv{font-size:20px;font-weight:700;color:var(--acc)}.slb{font-size:11px;color:var(--txt3);margin-top:2px}
+.lbw{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--rl);overflow:hidden}
+.lbr{display:flex;align-items:center;border-bottom:0.5px solid var(--bor);padding:12px 14px;gap:12px}
+.lbr:last-child{border-bottom:none}
+.lbrk{width:28px;text-align:center;font-size:18px;flex-shrink:0}
+.lbav{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2);flex-shrink:0}
+.lbavi{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;background:var(--acc);flex-shrink:0}
+.lbm{flex:1;min-width:0}
+.lbn{font-size:15px;font-weight:600}
+.lbt{font-size:11px;color:var(--txt3);margin-top:3px;font-style:italic;line-height:1.4}
+.lbright{text-align:right;flex-shrink:0}
+.lbp{font-size:16px;font-weight:700;color:var(--acc)}
+.lbs{font-size:11px;color:var(--txt3)}
+.bdr{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid var(--bor)}
+.bdl{font-size:10px;color:var(--txt3);width:64px;flex-shrink:0}
+.bdm{font-size:12px;color:var(--txt2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bdp{font-size:13px;font-weight:700;color:var(--gtxt);flex-shrink:0}
+.login-box{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--rl);padding:1.5rem;margin-bottom:14px;text-align:center}
+.login-box h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.login-box p{font-size:13px;color:var(--txt2);margin-bottom:16px}
+.pred-mc{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--rl);margin-bottom:14px;overflow:hidden}
+.pred-mh{background:var(--acc);padding:10px 14px}
+.pred-mt{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.pred-md{font-size:11px;color:rgba(255,255,255,0.7)}
+.pred-body{padding:14px}
+.skor-input-wrap{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.skor-input-wrap label{font-size:13px;color:var(--txt2);font-weight:500;white-space:nowrap}
+.skor-input{flex:1;padding:12px;border:1.5px solid var(--bor2);border-radius:var(--r);font-size:20px;font-weight:700;text-align:center;background:var(--sur2);color:var(--txt);letter-spacing:2px}
+.skor-input:focus{outline:none;border-color:var(--acc)}
+.skor-locked{background:var(--gbg);border:1.5px solid var(--gbr);border-radius:var(--r);padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gtxt);font-weight:500}
+.save-btn{width:100%;padding:13px;background:var(--acc);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-size:15px;font-weight:500;min-height:var(--t);display:flex;align-items:center;justify-content:center;gap:7px}
+.save-btn:active{opacity:0.82}
+.odds-info{font-size:11px;color:var(--txt3);margin-top:8px;text-align:center}
+.ap{background:var(--sur);border:0.5px solid var(--bor);border-radius:var(--rl);padding:1rem;margin-bottom:14px}
+.ap h3{font-size:14px;font-weight:600;margin-bottom:12px;color:var(--acc);display:flex;align-items:center;gap:6px}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.fg label{font-size:12px;color:var(--txt2);font-weight:500}
+.fg input,.fg select,.fg textarea{padding:13px 12px;border:1px solid var(--bor2);border-radius:var(--r);font-size:16px;background:var(--sur2);color:var(--txt);width:100%;min-height:var(--t)}
+.fg textarea{min-height:80px;resize:vertical;font-family:inherit;font-size:14px}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fst{font-size:11px;color:var(--txt3);margin:12px 0 6px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.sbtn{background:var(--acc);color:#fff;border:none;border-radius:var(--r);padding:13px 18px;cursor:pointer;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:7px;width:100%;min-height:var(--t);margin-top:6px}
+.sbtn.sm{width:auto;padding:10px 14px;font-size:13px;min-height:40px;margin-top:0}
+.dbtn{background:var(--rbg);color:var(--rtxt);border:1px solid var(--rbr);border-radius:var(--r);padding:10px 14px;cursor:pointer;font-size:13px;min-height:40px}
+.res-row{border-bottom:0.5px solid var(--bor);padding:12px 0}
+.res-row:last-child{border-bottom:none}
+.mbg{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:200;align-items:flex-end;justify-content:center}
+.mbg.open{display:flex}
+@media(min-width:480px){.mbg{align-items:center}}
+.mdl{background:var(--sur);border-radius:var(--rl) var(--rl) 0 0;padding:1.4rem 1.2rem 2rem;width:100%;max-height:90vh;overflow-y:auto}
+@media(min-width:480px){.mdl{border-radius:var(--rl);width:360px;padding:1.4rem}}
+.mdld{width:40px;height:4px;background:var(--bor2);border-radius:4px;margin:0 auto 16px}
+.mdl h3{font-size:16px;font-weight:600;margin-bottom:14px}
+.mdl input{width:100%;padding:13px 12px;border:1px solid var(--bor2);border-radius:var(--r);font-size:16px;background:var(--sur2);color:var(--txt);margin-bottom:10px;min-height:var(--t)}
+.mbs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.bp{padding:14px;background:var(--acc);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-size:15px;font-weight:500;min-height:var(--t)}
+.bs{padding:14px;background:var(--sur2);color:var(--txt);border:1px solid var(--bor2);border-radius:var(--r);cursor:pointer;font-size:15px;min-height:var(--t)}
+.err{color:var(--rtxt);font-size:13px;margin:-6px 0 8px;display:none}
+.empty{color:var(--txt3);font-size:14px;padding:1.5rem 0;line-height:1.6;text-align:center}
+.av-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:0.5px solid var(--bor)}
+.av-row:last-child{border-bottom:none}
+.av56{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2);flex-shrink:0}
+.av56i{width:56px;height:56px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0}
+.avi{flex:1}.avn{font-size:15px;font-weight:600}.avs{font-size:11px;color:var(--txt3);margin-top:2px}
+.avb{display:flex;gap:6px;flex-shrink:0}
+.ri2{background:var(--sur2);border-radius:var(--r);padding:10px 12px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px}
+.rt{flex:1;font-size:13px;color:var(--txt2);font-style:italic;line-height:1.5}
+.ra{display:flex;gap:4px;flex-shrink:0}
+.ib{background:none;border:none;cursor:pointer;color:var(--txt3);padding:6px;border-radius:6px;font-size:16px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center}
+.tag-ok{background:var(--gbg);color:var(--gtxt);padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600}
+.sync-bar{background:var(--sur2);border:0.5px solid var(--bor);border-radius:var(--r);padding:8px 12px;margin-bottom:10px;font-size:12px;color:var(--txt3);display:flex;align-items:center;gap:8px}
+.sync-bar.ok{background:var(--gbg);color:var(--gtxt);border-color:var(--gbr)}
+.sync-bar.err{background:var(--rbg);color:var(--rtxt);border-color:var(--rbr)}
+.loading{text-align:center;padding:2rem;color:var(--txt3);font-size:14px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hdr">
+    <div class="htitle"><i class="ti ti-trophy" style="font-size:20px"></i> FIFA 2026 <span class="hbadge">32. Tur</span></div>
+    <div class="hright">
+      <div class="adm-ind" id="admInd"><i class="ti ti-shield-check" style="font-size:13px"></i> Admin</div>
+      <div class="user-chip" id="userChip" style="display:none"><i class="ti ti-user" style="font-size:13px"></i> <span id="userChipName"></span></div>
+      <button class="abtn" id="admBtn" onclick="openLoginModal()"><i class="ti ti-lock" style="font-size:15px"></i></button>
+    </div>
+  </div>
+  <div class="ct">
+    <div class="tc active" id="tab-matches">
+      <div class="sl">32. Tur · 28 Haz – 4 Tem 2026</div>
+      <div id="mlist"><div class="loading"><i class="ti ti-loader" style="font-size:24px"></i><br>Yükleniyor...</div></div>
+    </div>
+    <div class="tc" id="tab-predict">
+      <div class="sl">Tahmin Gir</div>
+      <div id="deadline-banner"></div>
+      <div id="plist"></div>
+    </div>
+    <div class="tc" id="tab-lb">
+      <div class="sl">Sıralama</div>
+      <div class="sc" id="scards"></div>
+      <div class="lbw" id="lblist"></div>
+    </div>
+    <div class="tc" id="tab-bd">
+      <div class="sl">Puan Dökümü</div>
+      <div id="bdlist"></div>
+    </div>
+    <div class="tc" id="tab-adm">
+      <div id="db-status" class="sync-bar"><i class="ti ti-database" style="font-size:14px"></i> Firebase bağlantısı kontrol ediliyor...</div>
+      <div class="ap">
+        <h3><i class="ti ti-edit"></i> Sonuç Gir / Düzenle</h3>
+        <p style="font-size:12px;color:var(--txt2);margin-bottom:12px">Gerçek maç sonuçlarını gir. Örnek: 2-1</p>
+        <div id="rentry"></div>
+      </div>
+      <div class="ap">
+        <h3><i class="ti ti-users"></i> Avatarlar</h3>
+        <div id="avlist"></div>
+      </div>
+      <div class="ap">
+        <h3><i class="ti ti-mood-smile"></i> Espri Yönetimi</h3>
+        <div id="roasteditor"></div>
+        <div class="fst">Yeni Espri</div>
+        <div class="fg"><label>Pozisyon</label>
+          <select id="nrpos" style="min-height:var(--t);padding:12px">
+            <option value="0">🥇 1. sıra</option><option value="1">🥈 2. sıra</option>
+            <option value="2">🥉 3. sıra</option><option value="3">4. sıra</option><option value="4">5. sıra</option>
+          </select>
+        </div>
+        <div class="fg"><label>Espri</label><textarea id="nrtxt" placeholder="Yeni espri..."></textarea></div>
+        <button class="sbtn" onclick="addRoast()"><i class="ti ti-plus"></i> Ekle</button>
+      </div>
+      <div class="ap">
+        <h3><i class="ti ti-plus"></i> Yeni Maç Ekle</h3>
+        <div class="fr2"><div class="fg"><label>Takım 1</label><input id="at1" placeholder="İspanya" autocomplete="off"></div><div class="fg"><label>Takım 2</label><input id="at2" placeholder="Fransa" autocomplete="off"></div></div>
+        <div class="fr3"><div class="fg"><label>Tarih</label><input id="adate" type="date"></div><div class="fg"><label>Saat (TSİ)</label><input id="atime" type="time" value="20:00"></div><div class="fg"><label>Şehir</label><input id="aven" placeholder="Dallas" autocomplete="off"></div></div>
+        <div class="fst">Maç Sonu Oranları</div>
+        <div class="fr3"><div class="fg"><label>1</label><input id="ms1" type="number" step="0.01" placeholder="1.80" inputmode="decimal"></div><div class="fg"><label>X</label><input id="msx" type="number" step="0.01" placeholder="3.50" inputmode="decimal"></div><div class="fg"><label>2</label><input id="ms2" type="number" step="0.01" placeholder="4.20" inputmode="decimal"></div></div>
+        <div class="fst">Alt/Üst 2.5</div>
+        <div class="fr2"><div class="fg"><label>Alt</label><input id="oalt" type="number" step="0.01" placeholder="1.75" inputmode="decimal"></div><div class="fg"><label>Üst</label><input id="oust" type="number" step="0.01" placeholder="2.05" inputmode="decimal"></div></div>
+        <button class="sbtn" onclick="addMatch()"><i class="ti ti-device-floppy"></i> Kaydet</button>
+      </div>
+    </div>
+  </div>
+  <div class="bnav">
+    <button class="bn active" id="bn-matches" onclick="switchTab('matches')"><i class="ti ti-ball-football"></i><span>Maçlar</span></button>
+    <button class="bn" id="bn-predict" onclick="switchTab('predict')"><i class="ti ti-pencil"></i><span>Tahmin</span></button>
+    <button class="bn" id="bn-lb" onclick="switchTab('lb')"><i class="ti ti-trophy"></i><span>Sıralama</span></button>
+    <button class="bn" id="bn-bd" onclick="switchTab('bd')"><i class="ti ti-chart-bar"></i><span>Puanlar</span></button>
+    <button class="bn" id="bn-adm" style="display:none" onclick="switchTab('adm')"><i class="ti ti-settings"></i><span>Yönetim</span></button>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="mbg" id="loginModal">
+  <div class="mdl"><div class="mdld"></div>
+    <h3><i class="ti ti-lock"></i> Giriş Yap</h3>
+    <input type="password" id="lpw" placeholder="Şifrenizi girin" inputmode="numeric" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="err" id="lerr">Hatalı şifre!</div>
+    <div class="mbs"><button class="bs" onclick="closeM('loginModal')">İptal</button><button class="bp" onclick="doLogin()">Giriş</button></div>
+  </div>
+</div>
+<!-- Roast modal -->
+<div class="mbg" id="roastModal">
+  <div class="mdl"><div class="mdld"></div>
+    <h3><i class="ti ti-mood-smile"></i> Espriyi Düzenle</h3>
+    <textarea id="redit" style="width:100%;min-height:90px;padding:8px;border:1px solid var(--bor2);border-radius:var(--r);background:var(--sur2);color:var(--txt);font-family:inherit;font-size:14px;margin-bottom:10px"></textarea>
+    <div class="mbs"><button class="bs" onclick="closeM('roastModal')">İptal</button><button class="bp" onclick="saveRoastEdit()">Kaydet</button></div>
+  </div>
+</div>
+<!-- Avatar modal -->
+<div class="mbg" id="avModal">
+  <div class="mdl"><div class="mdld"></div>
+    <h3 id="avModalTitle"><i class="ti ti-user-circle"></i> Avatar Yükle</h3>
+    <div style="text-align:center;margin-bottom:14px">
+      <img id="avpimg" style="display:none;width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--bor2);margin:0 auto">
+      <div id="avpinit" style="width:90px;height:90px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;margin:0 auto"></div>
+    </div>
+    <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--bor2);border-radius:var(--r);padding:20px;cursor:pointer;gap:8px;color:var(--txt2);font-size:14px;margin-bottom:10px">
+      <i class="ti ti-upload" style="font-size:28px;color:var(--acc)"></i>Fotoğraf seç (JPG/PNG)
+      <input type="file" id="avfile" accept=".jpg,.jpeg,.png" style="display:none" onchange="previewAv(this)">
+    </label>
+    <div style="font-size:11px;color:var(--txt3);text-align:center;margin-bottom:12px">Max 2 MB</div>
+    <div class="mbs"><button class="bs" onclick="closeM('avModal')">İptal</button><button class="bp" onclick="saveAv()">Kaydet</button></div>
+  </div>
+</div>
+
+<script type="module">
+// ── Firebase Config ──
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, set, get, update, onValue } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+const firebaseConfig = {
+  databaseURL: 'https://wc2026-31646-default-rtdb.firebaseio.com/'
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// ── Kullanıcılar ──
+const USERS = {
+  'cenk':    {name:'Cenk',    pw:'4325'},
+  'tolga':   {name:'Tolga',   pw:'1944'},
+  'yigit':   {name:'Yiğit',   pw:'1938'},
+  'isitan':  {name:'Işıtan',  pw:'571632'},
+  'mustafa': {name:'Mustafa', pw:'1960'},
+};
+const ADMIN_PW = '1881';
+const NAMES = ['cenk','tolga','yigit','isitan','mustafa'];
+const NDISP = {cenk:'Cenk',tolga:'Tolga',yigit:'Yiğit',isitan:'Işıtan',mustafa:'Mustafa'};
+
+var DEADLINE = new Date(Date.UTC(2026,5,28,18,30,0));
+function isPastDeadline(){return Date.now()>=DEADLINE.getTime();}
+function deadlineStr(){return '28 Haziran 2026, TSİ 21:30';}
+
+let isAdmin=false, currentUser=null, matches=[], preds={}, avatars={}, roastEditPos=-1, roastEditIdx=-1, avName='';
+
+let roasts=[
+  ['Pişman olacaklar. Tabii önce puanlarını geçerlerse.','Şans değil, sezgi. Fark var.','Lider olmak tesadüf değil.'],
+  ['Yüksek ihtimalli tahminlere oynadı — yanlış çıktı.','Umutla dolu tahminler. Umut puan değil.','Bu puanla kendini kazandırıyorsun.'],
+  ['Bozuk saat bile günde iki kez doğruyu gösterir.','Şans yetmez, tahmin de. Sende ikisi de yok.','Ortalama altı performans.'],
+  ['Maçları mı izledin, rastgele mi seçtin? Fark yok.','Bu kadar yanlış olmak neredeyse sanat.','Buradan sadece yukarı gidebilir. Umarım.'],
+  ['Buraya bakacak bir şey yok. Tıpkı kupası gibi.','Tutarlı biçimde yanlış.','Pes etme. Tahmin etmeyi bırak yeter.']
+];
+
+const MATCHES_DEFAULT = [
+  {id:73,t1:'Güney Afrika',t2:'Kanada',date:'2026-06-28',time:'22:00',venue:'Los Angeles',odds:{ms:{t1:3.90,x:3.25,t2:1.95},au:{alt:2.10,ust:1.77}},result:null},
+  {id:76,t1:'Brezilya',t2:'Japonya',date:'2026-06-29',time:'20:00',venue:'Houston',odds:{ms:{t1:1.45,x:4.30,t2:7.00},au:{alt:1.95,ust:1.87}},result:null},
+  {id:74,t1:'Almanya',t2:'Paraguay',date:'2026-06-29',time:'23:30',venue:'Boston',odds:{ms:{t1:1.40,x:4.50,t2:8.00},au:{alt:1.87,ust:1.95}},result:null},
+  {id:75,t1:'Hollanda',t2:'Fas',date:'2026-06-30',time:'04:00',venue:'Monterrey',odds:{ms:{t1:2.05,x:3.20,t2:3.80},au:{alt:1.91,ust:1.91}},result:null},
+  {id:78,t1:'Fildişi Sahilleri',t2:'Norveç',date:'2026-06-30',time:'20:00',venue:'Dallas',odds:{ms:{t1:3.40,x:3.30,t2:2.10},au:{alt:1.95,ust:1.87}},result:null},
+  {id:77,t1:'Fransa',t2:'İsveç',date:'2026-07-01',time:'00:00',venue:'New York/NJ',odds:{ms:{t1:1.65,x:3.80,t2:5.50},au:{alt:1.77,ust:2.10}},result:null},
+  {id:79,t1:'Meksika',t2:'Ekvador',date:'2026-07-01',time:'04:00',venue:'Mexico City',odds:{ms:{t1:1.57,x:4.10,t2:5.80},au:{alt:1.91,ust:1.91}},result:null},
+  {id:80,t1:'İngiltere',t2:'Kongo DR',date:'2026-07-01',time:'19:00',venue:'Atlanta',odds:{ms:{t1:1.20,x:8.00,t2:15.00},au:{alt:1.71,ust:2.20}},result:null},
+  {id:82,t1:'Belçika',t2:'Senegal',date:'2026-07-01',time:'23:00',venue:'Seattle',odds:{ms:{t1:2.20,x:3.60,t2:3.30},au:{alt:1.95,ust:1.87}},result:null},
+  {id:81,t1:'ABD',t2:'Bosna Hersek',date:'2026-07-02',time:'03:00',venue:'San Francisco',odds:{ms:{t1:1.75,x:3.60,t2:4.80},au:{alt:1.87,ust:1.95}},result:null},
+  {id:84,t1:'İspanya',t2:'Avusturya',date:'2026-07-02',time:'22:00',venue:'Los Angeles',odds:{ms:{t1:1.36,x:5.20,t2:8.50},au:{alt:1.83,ust:2.00}},result:null},
+  {id:83,t1:'Portekiz',t2:'Hırvatistan',date:'2026-07-03',time:'02:00',venue:'Toronto',odds:{ms:{t1:1.62,x:4.30,t2:5.50},au:{alt:1.91,ust:1.91}},result:null},
+  {id:85,t1:'İsviçre',t2:'Cezayir',date:'2026-07-03',time:'06:00',venue:'Vancouver',odds:{ms:{t1:1.77,x:4.00,t2:4.80},au:{alt:1.87,ust:1.95}},result:null},
+  {id:88,t1:'Avustralya',t2:'Mısır',date:'2026-07-03',time:'21:00',venue:'Dallas',odds:{ms:{t1:2.20,x:3.10,t2:3.40},au:{alt:1.91,ust:1.91}},result:null},
+  {id:86,t1:'Arjantin',t2:'Yeşil Burun Adaları',date:'2026-07-04',time:'01:00',venue:'Miami',odds:{ms:{t1:1.18,x:6.50,t2:14.00},au:{alt:1.77,ust:2.10}},result:null},
+  {id:87,t1:'Kolombiya',t2:'Gana',date:'2026-07-04',time:'04:30',venue:'Kansas City',odds:{ms:{t1:1.50,x:4.60,t2:6.60},au:{alt:1.91,ust:1.91}},result:null},
+];
+
+// ── Firebase helpers ──
+async function fbGet(path){
+  try{const snap=await get(ref(db,path));return snap.exists()?snap.val():null;}
+  catch(e){console.error('fbGet error',e);return null;}
+}
+async function fbSet(path,val){
+  try{await set(ref(db,path),val);return true;}
+  catch(e){console.error('fbSet error',e);return false;}
+}
+async function fbUpdate(path,val){
+  try{await update(ref(db,path),val);return true;}
+  catch(e){console.error('fbUpdate error',e);return false;}
+}
+
+// ── Load data from Firebase ──
+async function loadData(){
+  try{
+    const data = await fbGet('/');
+    if(data){
+      matches = data.matches ? Object.values(data.matches) : JSON.parse(JSON.stringify(MATCHES_DEFAULT));
+      preds = data.preds || {};
+      avatars = data.avatars || {};
+      if(data.roasts) roasts = data.roasts;
+    } else {
+      // İlk kez — default maçları yaz
+      matches = JSON.parse(JSON.stringify(MATCHES_DEFAULT));
+      await fbSet('/matches', matches);
+    }
+    setDbStatus(true);
+  } catch(e){
+    console.error('loadData error',e);
+    matches = JSON.parse(JSON.stringify(MATCHES_DEFAULT));
+    setDbStatus(false);
+  }
+  // Oturum
+  try{const sess=localStorage.getItem('wc26sess');if(sess){const s=JSON.parse(sess);if(s.user&&USERS[s.user]){currentUser=s.user;showUserUI();}}}catch(e){}
+  renderAll();
+}
+
+// Gerçek zamanlı dinleme
+function listenRealtime(){
+  onValue(ref(db,'/'), function(snap){
+    if(!snap.exists()) return;
+    const data = snap.val();
+    if(data.matches) matches = Object.values(data.matches);
+    if(data.preds) preds = data.preds;
+    if(data.avatars) avatars = data.avatars;
+    if(data.roasts) roasts = data.roasts;
+    renderAll();
+  });
+}
+
+function setDbStatus(ok){
+  const el=document.getElementById('db-status');
+  if(!el) return;
+  if(ok){
+    el.className='sync-bar ok';
+    el.innerHTML='<i class="ti ti-database" style="font-size:14px"></i> Firebase bağlı — veriler tüm cihazlarda senkronize';
+  } else {
+    el.className='sync-bar err';
+    el.innerHTML='<i class="ti ti-database-off" style="font-size:14px"></i> Firebase bağlantı hatası!';
+  }
+}
+
+async function saveMatches(){await fbSet('/matches',matches);}
+async function savePreds(){await fbSet('/preds',preds);}
+async function saveAvatars(){await fbSet('/avatars',avatars);}
+async function saveRoasts(){await fbSet('/roasts',roasts);}
+
+// ── Helpers ──
+function parseScore(s){
+  if(!s) return null;
+  s=s.trim();
+  var m=s.match(/^(\d+)\s*[-–]\s*(\d+)$/);
+  if(!m) return null;
+  return {g1:parseInt(m[1]),g2:parseInt(m[2])};
+}
+function scoreResult(sc){
+  if(!sc) return null;
+  if(sc.g1>sc.g2) return '1';
+  if(sc.g1<sc.g2) return '2';
+  return 'x';
+}
+function msOdds(m,res){
+  if(res==='1') return m.odds.ms.t1;
+  if(res==='x') return m.odds.ms.x;
+  return m.odds.ms.t2;
+}
+function matchStarted(m){
+  try{
+    var parts=m.date.split('-');
+    var tparts=(m.time||'00:00').split(':');
+    var matchUTC=new Date(Date.UTC(parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2]),parseInt(tparts[0])-3,parseInt(tparts[1]||0),0));
+    return Date.now()>=matchUTC.getTime();
+  }catch(e){return true;}
+}
+function calcScore(ukey){
+  var total=0,detail=[];
+  matches.forEach(function(m){
+    if(!m.result) return;
+    var pred=preds[ukey]&&preds[ukey][m.id];
+    if(!pred||!pred.skor) return;
+    var predSc=parseScore(pred.skor);
+    if(!predSc) return;
+    var realSc=parseScore(m.result);
+    if(!realSc) return;
+    var predRes=scoreResult(predSc);
+    var realRes=scoreResult(realSc);
+    if(predRes!==realRes) return;
+    var basePts=parseFloat(msOdds(m,realRes).toFixed(2));
+    var exact=(predSc.g1===realSc.g1&&predSc.g2===realSc.g2);
+    var pts=exact?parseFloat((basePts*2).toFixed(2)):basePts;
+    total+=pts;
+    detail.push({mId:m.id,pts:pts,exact:exact,m:m,predSkor:pred.skor,realSkor:m.result});
+  });
+  return{total:parseFloat(total.toFixed(2)),detail:detail};
+}
+function avEl(ukey,sz){
+  sz=sz||30;
+  var src=avatars[ukey];
+  if(src) return '<img class="pav" src="'+src+'" alt="'+ukey+'" style="width:'+sz+'px;height:'+sz+'px">';
+  return '<div class="pavi" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*.36)+'px">'+(NDISP[ukey]||ukey).slice(0,2).toUpperCase()+'</div>';
+}
+function getRoast(ukey,rank,total){
+  if(total===0) return 'Henüz tahmin bile etmedi.';
+  var idx=Math.min(rank,roasts.length-1);
+  var arr=roasts[idx];if(!arr||!arr.length)return'...';
+  var h=0;for(var i=0;i<ukey.length;i++)h=(h*31+ukey.charCodeAt(i))%arr.length;
+  return arr[h];
+}
+function fdate(d,t){
+  try{var dt=new Date(d+'T'+(t||'00:00').substring(0,5));return dt.toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'})+' '+t;}
+  catch(e){return d+' '+t;}
+}
+
+// ── Render ──
+function renderMatches(){
+  var el=document.getElementById('mlist');if(!el)return;
+  el.innerHTML=matches.map(function(m){
+    var started=matchStarted(m);
+    var cols=NAMES.map(function(ukey){
+      var pred=preds[ukey]&&preds[ukey][m.id];
+      var predSc=pred&&pred.skor?parseScore(pred.skor):null;
+      var realSc=m.result?parseScore(m.result):null;
+      var cell='<div class="pce nd">—</div>';
+      if(predSc){
+        if(!started){
+          cell='<div class="pce nd"><i class="ti ti-eye-off" style="font-size:10px"></i></div>';
+        } else if(!realSc){
+          cell='<div class="pce">'+pred.skor+'</div>';
+        } else {
+          var predRes=scoreResult(predSc);var realRes=scoreResult(realSc);
+          var exact=(predSc.g1===realSc.g1&&predSc.g2===realSc.g2);
+          var ok=predRes===realRes;
+          var pts=0;
+          if(ok){var base=parseFloat(msOdds(m,realRes).toFixed(2));pts=exact?parseFloat((base*2).toFixed(2)):base;}
+          var cls=exact?'ok2':(ok?'ok':'bad');
+          cell='<div class="pce '+cls+'">'+pred.skor+(pts>0?'<span class="ppts">+'+pts+'</span>':'')+'</div>';
+        }
+      }
+      return '<div class="pc">'+avEl(ukey,26)+'<div class="pn">'+NDISP[ukey]+'</div>'+cell+'</div>';
+    }).join('');
+    var resultHtml=m.result?'<span class="rdg rok">'+m.result+'</span>':'<span class="rdg rp">Bekleniyor</span>';
+    return '<div class="mc">'+
+      '<div class="mh"><span class="mhd">'+fdate(m.date,m.time)+' · '+m.venue+'</span><span class="mhn">#'+m.id+'</span></div>'+
+      '<div class="mt"><div class="tn">'+m.t1+'</div><div class="vs">vs</div><div class="tn">'+m.t2+'</div></div>'+
+      '<div class="rb"><span style="font-size:11px;color:var(--txt2)">Sonuç: </span>'+resultHtml+'</div>'+
+      '<div class="ow"><div class="or">'+
+        '<div class="oc">MS 1<span>'+m.odds.ms.t1+'</span></div>'+
+        '<div class="oc">MS X<span>'+m.odds.ms.x+'</span></div>'+
+        '<div class="oc">MS 2<span>'+m.odds.ms.t2+'</span></div>'+
+        '<div class="oc">Alt<span>'+m.odds.au.alt+'</span></div>'+
+        '<div class="oc">Üst<span>'+m.odds.au.ust+'</span></div>'+
+      '</div></div>'+
+      '<div style="padding:4px 12px 3px;font-size:10px;color:var(--txt3)">'+(started?'mavi=tam skor ×2 · yeşil=sonuç doğru':'<i class="ti ti-lock" style="font-size:10px"></i> Tahminler maç saatinde açılır')+'</div>'+
+      '<div class="pg"><div class="pgr">'+cols+'</div></div>'+
+    '</div>';
+  }).join('');
+}
+
+function renderPredict(){
+  var el=document.getElementById('plist');if(!el)return;
+  var past=isPastDeadline();
+  var banner=document.getElementById('deadline-banner');
+  if(banner){
+    if(!past){
+      var msLeft=DEADLINE.getTime()-Date.now();
+      var hLeft=Math.floor(msLeft/3600000);var mLeft=Math.floor((msLeft%3600000)/60000);
+      banner.innerHTML='<div style="background:var(--gbg);border:1px solid var(--gbr);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--gtxt);display:flex;align-items:center;gap:8px"><i class="ti ti-clock" style="font-size:16px"></i><span>Son: <strong>'+deadlineStr()+'</strong> · Kalan: <strong>'+hLeft+'s '+mLeft+'dk</strong></span></div>';
+    } else {
+      banner.innerHTML='<div style="background:var(--rbg);border:1px solid var(--rbr);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--rtxt);display:flex;align-items:center;gap:8px"><i class="ti ti-clock-off" style="font-size:16px"></i><span>Tahmin süresi doldu — <strong>'+deadlineStr()+'</strong></span></div>';
+    }
+  }
+  if(!currentUser){
+    el.innerHTML='<div class="login-box"><i class="ti ti-lock" style="font-size:40px;color:var(--txt3);display:block;margin-bottom:12px"></i><h3>Giriş Yapın</h3><p>Tahmin girebilmek için şifrenizle giriş yapın.</p><button class="sbtn" onclick="window.openLoginModal()"><i class="ti ti-login"></i> Giriş Yap</button></div>';
+    return;
+  }
+  var ukey=currentUser;
+  var savedCount=0;
+  matches.forEach(function(m){var p=preds[ukey]&&preds[ukey][m.id];if(p&&p.locked)savedCount++;});
+  if(past&&savedCount===0){
+    el.innerHTML='<div class="login-box" style="padding:2.5rem 1.5rem"><div style="font-size:64px;margin-bottom:12px">🚫</div><h3 style="font-size:24px;color:var(--rtxt);margin-bottom:12px">ELENDİNİZ!</h3><p style="font-size:14px;color:var(--txt2);line-height:1.7">Tahmin süresi <strong>'+deadlineStr()+'</strong> itibarıyla sona erdi.<br>Hiç tahmin kaydetmediğiniz için bu turda puanınız <strong>0</strong>.</p><div style="margin-top:20px;background:var(--rbg);border-radius:var(--r);padding:12px 16px;font-size:13px;color:var(--rtxt)"><i class="ti ti-x" style="font-size:16px;vertical-align:-3px"></i> '+NDISP[ukey]+' — 0 tahmin kayıtlı</div></div>';
+    return;
+  }
+  el.innerHTML=matches.map(function(m){
+    var pred=preds[ukey]&&preds[ukey][m.id];
+    var locked=pred&&pred.locked;
+    var predBody='';
+    if(locked){
+      predBody='<div class="skor-locked"><i class="ti ti-lock" style="font-size:16px"></i> Kaydedildi: <strong>'+pred.skor+'</strong></div><div class="odds-info">Puan maç bittikten sonra görünür</div>';
+    } else if(past){
+      predBody='<div class="skor-locked" style="background:var(--rbg);border:1.5px solid var(--rbr)"><i class="ti ti-clock-off" style="font-size:16px;color:var(--rtxt)"></i><span style="color:var(--rtxt)">Süre doldu — tahmin girilmedi</span></div>';
+    } else {
+      predBody='<div class="skor-input-wrap"><label>Skor:</label><input class="skor-input" id="skor-'+m.id+'" type="text" placeholder="1-0" maxlength="6"/></div>'+
+        '<div class="odds-info">1: '+m.odds.ms.t1+' · X: '+m.odds.ms.x+' · 2: '+m.odds.ms.t2+' | Tam skor = puan ×2</div>'+
+        '<button class="save-btn" onclick="window.savePred('+m.id+')"><i class="ti ti-device-floppy"></i> Kaydet (Kilitleniyor!)</button>';
+    }
+    return '<div class="pred-mc"><div class="pred-mh"><div class="pred-mt">'+m.t1+' — '+m.t2+'</div><div class="pred-md">'+fdate(m.date,m.time)+' · '+m.venue+'</div></div><div class="pred-body">'+predBody+'</div></div>';
+  }).join('');
+}
+
+function renderLeaderboard(){
+  var el=document.getElementById('lblist');var sc=document.getElementById('scards');if(!el)return;
+  var scores=NAMES.map(function(ukey){var s=calcScore(ukey);return{ukey:ukey,total:s.total,detail:s.detail};});
+  scores.sort(function(a,b){return b.total-a.total;});
+  var played=matches.filter(function(m){return m.result;}).length;
+  var M=['🥇','🥈','🥉','4','5'];
+  if(sc)sc.innerHTML='<div class="scd"><div class="sv">'+played+'/'+matches.length+'</div><div class="slb">Oynanan</div></div><div class="scd"><div class="sv">'+NAMES.length+'</div><div class="slb">Oyuncu</div></div><div class="scd"><div class="sv">'+(scores[0]?scores[0].total.toFixed(2):'0.00')+'</div><div class="slb">Lider</div></div>';
+  el.innerHTML=scores.map(function(s,i){
+    var av=avatars[s.ukey];
+    var avH=av?'<img class="lbav" src="'+av+'" alt="'+s.ukey+'">':'<div class="lbavi">'+NDISP[s.ukey].slice(0,2).toUpperCase()+'</div>';
+    return '<div class="lbr"><div class="lbrk">'+M[i]+'</div>'+avH+'<div class="lbm"><div class="lbn">'+NDISP[s.ukey]+'</div><div class="lbt">'+getRoast(s.ukey,i,s.total)+'</div></div><div class="lbright"><div class="lbp">'+s.total.toFixed(2)+'</div><div class="lbs">'+s.detail.length+' isabetli</div></div></div>';
+  }).join('');
+}
+
+function renderBreakdown(){
+  var el=document.getElementById('bdlist');if(!el)return;
+  var scores=NAMES.map(function(ukey){var s=calcScore(ukey);return{ukey:ukey,total:s.total,detail:s.detail};});
+  scores.sort(function(a,b){return b.total-a.total;});
+  var played=matches.filter(function(m){return m.result;}).length;
+  var M=['🥇','🥈','🥉','',''];
+  var EM=['Buraya bakacak bir şey yok. Tıpkı kupası gibi.','Boş. Tahminlerin gibi.','Bir şey doğru çıkmamış.','Hiç isabet yok.','Başarı çıtası sıfır.'];
+  if(played===0){el.innerHTML='<div class="empty">Henüz sonuç girilmedi.</div>';return;}
+  el.innerHTML=scores.map(function(s,i){
+    var av=avatars[s.ukey];
+    var avH=av?'<img style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--bor2)" src="'+av+'">':'<div style="width:38px;height:38px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">'+NDISP[s.ukey].slice(0,2).toUpperCase()+'</div>';
+    var rows=s.detail.map(function(d){return '<div class="bdr"><span class="bdl">#'+d.mId+'</span><span class="bdm">'+d.m.t1+' – '+d.m.t2+' · '+d.predSkor+'</span><span style="font-size:10px;margin-right:4px">'+(d.exact?'<span class="tag-ok">Tam skor ×2</span>':'<span class="tag-ok">Sonuç ✓</span>')+'</span><span class="bdp">+'+d.pts.toFixed(2)+'</span></div>';}).join('');
+    return '<div class="mc" style="margin-bottom:14px"><div class="mh" style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div style="display:flex;align-items:center;gap:9px">'+avH+'<span class="mhd" style="font-size:14px;font-weight:700">'+(M[i]||'')+' '+NDISP[s.ukey]+'</span></div><span class="mhd" style="font-size:14px;font-weight:700">'+s.total.toFixed(2)+' p</span></div><div style="padding:10px 13px;font-size:12px;color:var(--txt2);font-style:italic;border-bottom:0.5px solid var(--bor);line-height:1.5">'+getRoast(s.ukey,i,s.total)+'</div><div style="padding:8px 13px">'+(s.detail.length?rows:'<div style="font-size:12px;color:var(--txt3);padding:4px 0">'+EM[i%EM.length]+'</div>')+'</div>'+(s.detail.length?'<div style="padding:5px 13px 11px;font-size:13px;font-weight:700;color:var(--acc);border-top:0.5px solid var(--bor);text-align:right">Toplam: '+s.total.toFixed(2)+'</div>':'')+'</div>';
+  }).join('');
+}
+
+function renderRentry(){
+  var el=document.getElementById('rentry');if(!el)return;
+  el.innerHTML=matches.map(function(m){
+    return '<div class="res-row"><div style="font-size:13px;font-weight:600;margin-bottom:8px;line-height:1.4">'+m.t1+' vs '+m.t2+'<br><span style="font-size:11px;color:var(--txt3);font-weight:400">'+m.venue+' · '+m.date+'</span></div>'+
+      '<div class="fr2"><div class="fg"><label>Gerçek Skor (ör: 2-1)</label><input id="res-'+m.id+'" type="text" placeholder="2-1" value="'+(m.result||'')+'" style="text-align:center;font-size:18px;font-weight:700;letter-spacing:2px"></div>'+
+      '<div class="fg" style="justify-content:flex-end"><label>&nbsp;</label><button class="sbtn sm" onclick="window.saveRes('+m.id+')"><i class="ti ti-check"></i> Kaydet</button></div></div></div>';
+  }).join('');
+}
+
+function renderAvList(){
+  var el=document.getElementById('avlist');if(!el)return;
+  el.innerHTML=NAMES.map(function(ukey){
+    var src=avatars[ukey];
+    var avH=src?'<img class="av56" src="'+src+'">':'<div class="av56i">'+NDISP[ukey].slice(0,2).toUpperCase()+'</div>';
+    return '<div class="av-row">'+avH+'<div class="avi"><div class="avn">'+NDISP[ukey]+'</div><div class="avs">'+(src?'Avatar yüklü':'Baş harfler')+'</div></div><div class="avb"><button class="sbtn sm" onclick="window.openAvModal(\''+ukey+'\')"><i class="ti ti-upload"></i> '+(src?'Değiştir':'Yükle')+'</button>'+(src?'<button class="dbtn" onclick="window.delAv(\''+ukey+'\')"><i class="ti ti-trash"></i></button>':'')+'</div></div>';
+  }).join('');
+}
+
+function renderRoastEditor(){
+  var el=document.getElementById('roasteditor');if(!el)return;
+  var PL=['🥇 1.','🥈 2.','🥉 3.','4.','5.'];
+  el.innerHTML=roasts.map(function(arr,pos){
+    return '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:8px;border-bottom:0.5px solid var(--bor);padding:4px 0">'+PL[pos]+' sıra</div>'+
+      arr.map(function(txt,idx){return '<div class="ri2"><div class="rt">'+txt+'</div><div class="ra"><button class="ib" onclick="window.openRoastEdit('+pos+','+idx+')"><i class="ti ti-pencil"></i></button><button class="ib" onclick="window.delRoast('+pos+','+idx+')"><i class="ti ti-trash"></i></button></div></div>';}).join('')+'</div>';
+  }).join('');
+}
+
+function renderAll(){renderMatches();renderPredict();renderLeaderboard();renderBreakdown();if(isAdmin){renderRentry();renderAvList();renderRoastEditor();}}
+
+// ── Actions ──
+window.savePred = async function(mId){
+  var ukey=currentUser;if(!ukey)return;
+  if(isPastDeadline()){alert('Tahmin süresi doldu! Son: '+deadlineStr());return;}
+  var inp=document.getElementById('skor-'+mId);if(!inp)return;
+  var val=inp.value.trim();
+  if(!parseScore(val)){alert('Geçerli skor girin! Örnek: 1-0 veya 2-1');return;}
+  if(!confirm('"'+val+'" tahminini kaydetmek istiyor musunuz?\nBu işlem geri alınamaz!')){return;}
+  if(!preds[ukey])preds[ukey]={};
+  preds[ukey][mId]={skor:val,locked:true,ts:Date.now()};
+  await savePreds();
+};
+
+window.saveRes = async function(mId){
+  var val=document.getElementById('res-'+mId).value.trim();
+  if(val&&!parseScore(val)){alert('Geçerli skor girin! Örnek: 2-1');return;}
+  var m=matches.find(function(x){return x.id===mId;});if(!m)return;
+  m.result=val||null;
+  await saveMatches();
+};
+
+window.addMatch = async function(){
+  var t1=document.getElementById('at1').value.trim();var t2=document.getElementById('at2').value.trim();var date=document.getElementById('adate').value;
+  if(!t1||!t2||!date){alert('Takım ve tarih zorunlu!');return;}
+  var id=matches.length?Math.max.apply(null,matches.map(function(m){return m.id;}))+1:1;
+  matches.push({id:id,t1:t1,t2:t2,date:date,time:document.getElementById('atime').value,venue:document.getElementById('aven').value||'',
+    odds:{ms:{t1:+document.getElementById('ms1').value||2,x:+document.getElementById('msx').value||3.5,t2:+document.getElementById('ms2').value||4},
+    au:{alt:+document.getElementById('oalt').value||1.75,ust:+document.getElementById('oust').value||2}},result:null});
+  ['at1','at2','adate','aven','ms1','msx','ms2','oalt','oust'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+  await saveMatches();alert('Maç eklendi!');
+};
+
+window.openAvModal = function(ukey){
+  avName=ukey;
+  document.getElementById('avModalTitle').innerHTML='<i class="ti ti-user-circle"></i> '+NDISP[ukey]+' — Avatar';
+  document.getElementById('avfile').value='';
+  var src=avatars[ukey];var img=document.getElementById('avpimg');var init=document.getElementById('avpinit');
+  if(src){img.src=src;img.style.display='block';init.style.display='none';}
+  else{init.textContent=NDISP[ukey].slice(0,2).toUpperCase();init.style.display='flex';img.style.display='none';}
+  document.getElementById('avModal').classList.add('open');
+};
+window.previewAv = function(input){
+  var f=input.files[0];if(!f)return;
+  if(f.size>2*1024*1024){alert('Max 2 MB!');input.value='';return;}
+  var r=new FileReader();r.onload=function(e){var img=document.getElementById('avpimg');var init=document.getElementById('avpinit');img.src=e.target.result;img.style.display='block';init.style.display='none';};r.readAsDataURL(f);
+};
+window.saveAv = async function(){
+  var f=document.getElementById('avfile').files[0];if(!f){closeM('avModal');return;}
+  var r=new FileReader();
+  r.onload=async function(e){
+    avatars[avName]=e.target.result;
+    await saveAvatars();
+    closeM('avModal');
+  };
+  r.readAsDataURL(f);
+};
+window.delAv = async function(ukey){
+  if(!confirm(NDISP[ukey]+' avatarını sil?'))return;
+  delete avatars[ukey];
+  await saveAvatars();
+};
+window.openRoastEdit = function(pos,idx){roastEditPos=pos;roastEditIdx=idx;document.getElementById('redit').value=roasts[pos][idx];document.getElementById('roastModal').classList.add('open');};
+window.saveRoastEdit = async function(){var txt=document.getElementById('redit').value.trim();if(!txt)return;roasts[roastEditPos][roastEditIdx]=txt;await saveRoasts();closeM('roastModal');};
+window.delRoast = async function(pos,idx){if(roasts[pos].length<=1){alert('En az bir espri!');return;}if(!confirm('Sil?'))return;roasts[pos].splice(idx,1);await saveRoasts();};
+window.addRoast = async function(){var pos=parseInt(document.getElementById('nrpos').value);var txt=document.getElementById('nrtxt').value.trim();if(!txt){alert('Espri boş!');return;}if(!roasts[pos])roasts[pos]=[];roasts[pos].push(txt);await saveRoasts();document.getElementById('nrtxt').value='';};
+
+// ── Auth ──
+window.openLoginModal = function(){
+  document.getElementById('lpw').value='';
+  document.getElementById('lerr').style.display='none';
+  document.getElementById('loginModal').classList.add('open');
+  setTimeout(function(){document.getElementById('lpw').focus();},300);
+};
+window.doLogin = function(){
+  var pw=document.getElementById('lpw').value.trim();
+  document.getElementById('lerr').style.display='none';
+  if(pw===ADMIN_PW){
+    isAdmin=true;currentUser=null;
+    document.getElementById('bn-adm').style.display='';
+    document.getElementById('admInd').classList.add('on');
+    document.getElementById('userChip').style.display='none';
+    document.getElementById('admBtn').innerHTML='<i class="ti ti-lock-open" style="font-size:15px"></i>';
+    document.getElementById('admBtn').onclick=function(){if(confirm('Çıkış?')){isAdmin=false;document.getElementById('bn-adm').style.display='none';document.getElementById('admInd').classList.remove('on');document.getElementById('admBtn').innerHTML='<i class="ti ti-lock" style="font-size:15px"></i>';document.getElementById('admBtn').onclick=window.openLoginModal;localStorage.removeItem('wc26sess');switchTab('matches');}};
+    closeM('loginModal');switchTab('adm');return;
+  }
+  var matched=null;
+  for(var ukey in USERS){if(USERS[ukey].pw===pw){matched=ukey;break;}}
+  if(matched){
+    currentUser=matched;localStorage.setItem('wc26sess',JSON.stringify({user:matched,ts:Date.now()}));
+    showUserUI();closeM('loginModal');switchTab('predict');
+  } else {
+    document.getElementById('lerr').style.display='block';
+  }
+};
+function showUserUI(){
+  var ukey=currentUser;
+  document.getElementById('userChip').style.display='flex';
+  document.getElementById('userChipName').textContent=NDISP[ukey];
+  document.getElementById('admBtn').innerHTML='<i class="ti ti-logout" style="font-size:15px"></i>';
+  document.getElementById('admBtn').onclick=function(){if(confirm('Çıkış?')){currentUser=null;document.getElementById('userChip').style.display='none';document.getElementById('admBtn').innerHTML='<i class="ti ti-lock" style="font-size:15px"></i>';document.getElementById('admBtn').onclick=window.openLoginModal;localStorage.removeItem('wc26sess');renderAll();switchTab('matches');}};
+}
+
+var TABS=['matches','predict','lb','bd','adm'];
+function switchTab(name){
+  TABS.forEach(function(t){
+    var tc=document.getElementById('tab-'+t);if(tc)tc.classList.toggle('active',t===name);
+    var bn=document.getElementById('bn-'+t);if(bn)bn.classList.toggle('active',t===name);
+  });
+  renderAll();window.scrollTo({top:0,behavior:'smooth'});
+}
+window.closeM = function(id){document.getElementById(id).classList.remove('open');};
+
+document.querySelectorAll('.mbg').forEach(function(bg){bg.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+// ── Start ──
+loadData().then(function(){listenRealtime();});
+</script>
+</body>
+</html>
